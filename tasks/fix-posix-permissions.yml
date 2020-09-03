@@ -9,9 +9,9 @@
     var: ansible_user
   when: verbose | bool
 
-- name: becone_user
+- name: become_user
   debug:
-    var: becone_user
+    var: become_user
   when: verbose | bool
 
 - name: Add macOS POSIX permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}.
