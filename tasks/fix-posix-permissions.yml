@@ -1,4 +1,19 @@
 ---
+- name: homebrew_user
+  debug:
+    var: homebrew_user
+  when: verbose | bool
+
+- name: ansible_user
+  debug:
+    var: ansible_user
+  when: verbose | bool
+
+- name: becone_user
+  debug:
+    var: becone_user
+  when: verbose | bool
+
 - name: Add macOS POSIX permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}.
   file:
     path: "{{ homebrew_prefix }}/{{ item }}"

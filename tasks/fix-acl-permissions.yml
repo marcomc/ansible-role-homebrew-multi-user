@@ -1,7 +1,7 @@
 ---
-- name: Add macOS ACL permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}'.
-  block:
-    - command: 'chmod -R +a "group:{{ homebrew_group }} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" "{{ homebrew_prefix }}/{{ item }}"'
+- block:
+    - name: Add macOS ACL permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}'.
+      command: 'chmod -R +a "group:{{ homebrew_group }} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" "{{ homebrew_prefix }}/{{ item }}"'
       args:
         warn: no
       loop: "{{ homebrew_folders_base + homebrew_folders_additional }}"
