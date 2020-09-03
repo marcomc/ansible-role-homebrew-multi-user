@@ -14,6 +14,11 @@
     var: become_user
   when: verbose | bool
 
+- name: become
+  debug:
+    var: become
+  when: verbose | bool
+
 - name: Add macOS POSIX permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}.
   file:
     path: "{{ homebrew_prefix }}/{{ item }}"
@@ -24,3 +29,4 @@
     state: directory
   register: posix_permissions
   loop: "{{ homebrew_folders_base + homebrew_folders_additional }}"
+  become: yes
