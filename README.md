@@ -20,7 +20,7 @@ For example
     - host: all
       vars:
         homebrew_group: "staff"
-        hombrew_acl_posix_permissions: yes
+        homebrew_acl_posix_permissions: yes
       roles:
         - marcomc.homebrew-multi-user
 
@@ -28,8 +28,8 @@ For example
 
     homebrew_user: ""                  # "{{ ansible_user_id }}" # only used for posix permissions
     homebrew_group: "staff"            # the name of the group you want to share the homebrew management
-    hombrew_acl_posix_permissions: yes
-    hombrew_fix_posix_permissions: no
+    homebrew_acl_posix_permissions: yes
+    homebrew_fix_posix_permissions: no
     homebrew_folders_base:
       - Cellar
       - Homebrew

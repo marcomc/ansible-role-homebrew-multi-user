@@ -26,4 +26,4 @@
       loop: "{{ cellar_conent.files | map(attribute='path') | list | sort }}"
       ignore_errors: yes
   # end block:
-  when: hombrew_fix_posix_permissions_on_single_cellars|default('no')
+  when: homebrew_fix_posix_permissions_on_single_cellars|default('no')
