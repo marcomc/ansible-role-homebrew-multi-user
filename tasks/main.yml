@@ -8,9 +8,9 @@
 
 - block:
   - include: fix-acl-permissions.yml
-    when: hombrew_fix_acl_permissions
+    when: homebrew_fix_acl_permissions
 
   - include: fix-posix-permissions.yml
-    when: hombrew_fix_posix_permissions
+    when: homebrew_fix_posix_permissions
       # end block
   become: yes
