@@ -1,0 +1,11 @@
+---
+- name: Add macOS POSIX permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}.
+  file:
+    path: "{{ homebrew_prefix }}/{{ item }}"
+    mode: "{{ homebrew_posix_permissions | default('ug+rw,o-w') }}"
+    owner: "{{ homebrew_user or omit if (homebrew_user is undefined or homebrew_user == '') }}"
+    group: "{{ homebrew_group | mandatory }}"
+    recurse: yes
+    state: directory
+  register: posix_permissions
+  loop: "{{ homebrew_folders_base + homebrew_folders_additional }}"
