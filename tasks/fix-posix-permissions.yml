@@ -1,32 +1,11 @@
 ---
-- name: homebrew_user
-  debug:
-    var: homebrew_user
-  when: verbose | bool
-
-- name: ansible_user
-  debug:
-    var: ansible_user
-  when: verbose | bool
-
-- name: become_user
-  debug:
-    var: become_user
-  when: verbose | bool
-
-- name: become
-  debug:
-    var: become
-  when: verbose | bool
-
 - name: Add macOS POSIX permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}.
   file:
     path: "{{ homebrew_prefix }}/{{ item }}"
     mode: "{{ homebrew_posix_permissions }}"
-    owner: "{{ homebrew_user or omit if (homebrew_user is undefined or homebrew_user == '') }}"
+    owner: "{{ homebrew_user if (homebrew_user is defined and homebrew_user != '') else omit }}"
     group: "{{ homebrew_group | mandatory }}"
     recurse: yes
     state: directory
   register: posix_permissions
   loop: "{{ homebrew_folders_base + homebrew_folders_additional }}"
-  become: yes
