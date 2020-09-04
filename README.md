@@ -52,6 +52,7 @@ For example
 This role has (not yet) a travis basic test (for github) only.
 
 ## Troubleshooting & Known issues
+The application of POSIX permissions might fail on some existing symlink inside the /usr/local/<homebrew-dirs>. and that might prevent the application of ownership or permissions to the elements that follow the erroring element. 
 
 ## Copyright
 Marco Massari Calderone (c) 2020
