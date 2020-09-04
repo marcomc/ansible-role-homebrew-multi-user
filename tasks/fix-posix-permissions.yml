@@ -1,5 +1,5 @@
 ---
-- name: Add macOS POSIX permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}.
+- name: Add macOS POSIX permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}'.
   file:
     path: "{{ homebrew_prefix }}/{{ item }}"
     mode: "{{ homebrew_posix_permissions }}"
