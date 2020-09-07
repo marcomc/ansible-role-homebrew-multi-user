@@ -3,7 +3,7 @@
   file:
     path: "{{ homebrew_prefix }}/{{ item }}"
     mode: "{{ homebrew_posix_permissions }}"
-    owner: "{{ homebrew_user if (homebrew_user is defined and homebrew_user != '') else omit }}"
+    owner: "{{ homebrew_user if (homebrew_user is defined and homebrew_user | length > 0) else omit }}"
     group: "{{ homebrew_group | mandatory }}"
     recurse: yes
     state: directory
