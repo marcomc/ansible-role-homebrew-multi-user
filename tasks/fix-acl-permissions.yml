@@ -1,10 +1,7 @@
 ---
 - block:
     - name: Add macOS ACL permissions of '{{ homebrew_prefix }}/*' for the group '{{ homebrew_group }}'.
-      command: 'chmod -R +a "group:{{ homebrew_group }}
-        allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,
-        writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit"
-        "{{ homebrew_prefix }}/{{ item }}"'
+      command: 'chmod -R +a "group:{{ homebrew_group }} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" "{{ homebrew_prefix }}/{{ item }}"' # noqa 204 - can't split this line without breaking it's work
       args:
         warn: no
       loop: "{{ homebrew_folders_base + homebrew_folders_additional }}"
@@ -23,10 +20,7 @@
 
     # Will apply `chmod -R +a ..` to every single sub-element of `Cellar`
     - name: Add macOS ACL permissions of '{{ homebrew_prefix }}/Cellar/*' for the group '{{ homebrew_group }}.
-      command: 'chmod -R +a "group:{{ homebrew_group }}
-        allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,
-        readextattr,writeextattr,readsecurity,file_inherit,directory_inherit"
-        "{{ item }}"'
+      command: 'chmod -R +a "group:{{ homebrew_group }} allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" "{{ item }}"' # noqa 204 - can't split this line without breaking it's work
       args:
         warn: no
       loop: "{{ cellar_conent.files | map(attribute='path') | list | sort }}"
