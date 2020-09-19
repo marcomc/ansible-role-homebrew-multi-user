@@ -22,7 +22,7 @@ For example
         homebrew_group: "staff"
         homebrew_acl_posix_permissions: yes
       roles:
-        - marcomc.homebrew-multi-user
+        - marcomc.homebrew_multi_user
 
 ## Variables
 
