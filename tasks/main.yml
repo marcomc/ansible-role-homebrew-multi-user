@@ -12,5 +12,6 @@
 
   - include: fix-posix-permissions.yml
     when: homebrew_fix_posix_permissions
+
   # end block
   become: yes

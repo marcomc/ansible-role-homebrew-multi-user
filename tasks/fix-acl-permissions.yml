@@ -6,6 +6,7 @@
         warn: no
       loop: "{{ homebrew_folders_base + homebrew_folders_additional }}"
       ignore_errors: yes
+      when: ansible_facts['os_family'] == 'Darwin'
 
   rescue:
     # This is a workaround to the fact that `chmod -R +a ...` will fail when the Cellar directory contains too many elements
