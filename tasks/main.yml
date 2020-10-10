@@ -1,7 +1,3 @@
-- name: FATAL
-  fail: msg="This role is only compatible with macOS"
-  when: ansible_facts['os_family'] != 'Darwin'
-
 - debug:
     msg: "{{ homebrew_folders_base + homebrew_folders_additional }}"
   when: verbose|bool
