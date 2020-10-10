@@ -1,7 +1,11 @@
+[![Build Status](https://travis-ci.com/marcomc/ansible-role-homebrew-multi-user.svg?branch=master)](https://travis-ci.com/marcomc/ansible-role-homebrew-multi-user)
+
 # Homebrew Multi User ansible role
 Ansible role to configure Homebrew to be managed by multiple users members of the same group.
 
 It is possible to choose to apply the permissions via ACL or POSIX or both.
+
+Used in [Splinter, an opinionated provisioning tool for macOS](https://github.com/marcomc/splinter).
 
 ## (Soft) Requirements & Dependencies
 * [Jeff Geerling](https://github.com/geerlingguy)'s' [geerlingguy.homebrew](https://github.com/geerlingguy/ansible-role-homebrew) which is defined as Ansible Galaxy dependency
@@ -52,10 +56,10 @@ For example
 This role has (not yet) a travis basic test (for github) only.
 
 ## Troubleshooting & Known issues
-The application of POSIX permissions might fail on some existing symlink inside the /usr/local/<homebrew-dirs>. and that might prevent the application of ownership or permissions to the elements that follow the erroring element. 
-
-## Copyright
-Marco Massari Calderone (c) 2020
+The application of POSIX permissions might fail on some existing symlink inside the /usr/local/<homebrew-dirs>. and that might prevent the application of ownership or permissions to the elements that follow the erroring element.
 
 ## License
-MIT
+[MIT](LICENSE)
+
+## Copyright
+Marco Massari Calderone (c) 2020 - marco@marcomc.com
