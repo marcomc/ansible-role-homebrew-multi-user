@@ -9,7 +9,9 @@
 - hosts: local
   vars:
     verbose: yes
-    target_user_id: "travis"
+    homebrew_group: 'staff'
+    homebrew_fix_acl_permissions: yes
+    homebrew_fix_posix_permissions: yes
 
   roles:
     - homebrew_multi_user

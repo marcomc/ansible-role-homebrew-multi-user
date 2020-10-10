@@ -28,7 +28,7 @@ env:
 install:
   - pip3 install --upgrade pip
   - pip3 install ansible ansible-lint
-  
+
 script:
   - ansible-lint .
   - ansible-playbook -i test/inventory test/playbook.yml --syntax-check
