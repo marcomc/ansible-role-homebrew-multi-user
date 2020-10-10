@@ -1,0 +1,16 @@
+---
+- hosts: local
+  tasks:
+    - add_host:
+        groups: local
+        name: "{{ lookup('env', 'TEST_ANSIBLE_HOSTNAME') }}"
+      changed_when: false
+
+- hosts: local
+  vars:
+    verbose: yes
+    target_user_id: "travis"
+
+  roles:
+    - homebrew_multi_user
+...

@@ -1,0 +1,43 @@
+---
+language: python
+python: 3.8.5
+matrix:
+  include:
+    # Catalina (10.15)
+    - os: osx
+      osx_image: xcode12
+      language: generic
+    # Mojave (10.14)
+    - os: osx
+      osx_image: xcode11.2
+      language: generic
+    - os: linux
+      dist: xenial
+    - os: linux
+      dist: bionic
+    - os: linux
+      dist: focal
+
+sudo: required
+env:
+  global:
+    - TEST_ANSIBLE_HOSTNAME: localhost
+      TEST_ANSIBLE_CONNECTION: local
+      ANSIBLE_BECOME_PASS: travis
+
+install:
+  - pip3 install --upgrade pip
+  - pip3 install ansible ansible-lint
+  
+script:
+  - ansible-lint .
+  - ansible-playbook -i test/inventory test/playbook.yml --syntax-check
+  - ansible-playbook -i test/inventory test/playbook.yml --list-tasks
+  - ansible-playbook -i test/inventory test/playbook.yml --connection=local -vvvv
+  - ansible-playbook -i test/inventory test/playbook.yml --connection=local -vvvv
+  - 'ansible-playbook -i test/inventory test/playbook.yml --connection=local | grep -q "changed=0.*failed=0" &&
+    (echo "Idempotence test: pass" && exit 0) || (echo "Idempotence test: fail" && exit 1)'
+
+notifications:
+    webhooks: https://galaxy.ansible.com/api/v1/notifications/
+...

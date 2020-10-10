@@ -1,14 +1,28 @@
 ---
 galaxy_info:
-  author: Marco Massari Calderone
-  description: Ansible role to configure homebrew to be managed by multiple users.
+  author: Marco Massari Calderone <marco@marcomc.com>
+  description: Ansible role to configure homebrew to be managed by multiple users. Also used in Splinter provisioning tool.
   license: MIT
   role_name: homebrew_multi_user
   min_ansible_version: 2.0
   platforms:
-    - name: macOS
+    - name: GenericLinux
       versions:
-        - all
+      - any
+    - name: MacOSX
+      versions:
+        - '10.7'
+        - '10.8'
+        - '10.9'
+        - '10.10'
+        - '10.11'
+        - '10.12'
+        - '10.13'
+        - '10.14'
+        - '10.15'
   galaxy_tags:
     - system
-    - osx
+    - user
+    - admin
+    - macos
+    - homebrew
